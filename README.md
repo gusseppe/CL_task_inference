@@ -6,7 +6,9 @@ This project aims to develop a domain-incremental detector for continual learnin
 
 ## TADIL
 A novel pipeline for detecting and identifying tasks in domain-incremental learning scenarios without supervision is shown in Figure 1.
+
 ![archi](img/archi.png)
+
 Figure 1: Given a batch of images as input $x$ associated with a specific task $T$, our method calculates the nearest-centroid embeddings $N_i$ and then checks whether they exhibit drift. If drift is present, we save $N_i$ in memory $\mathcal{M}$ and then a task classifier $h$ is incrementally trained using $N_i$ and $T_i$ with no supervision. Conversely, if no drift is detected, the classifier $h$ is employed to estimate the task $\hat T$. The multi-head classifier then selects the appropriate classifier based on the predicted task, generating the final prediction $y$.
 
 ## Features
