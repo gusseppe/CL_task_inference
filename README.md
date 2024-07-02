@@ -32,6 +32,11 @@ we present a pipeline algorithm for task-agnostic domain-incremental learning in
 
 For each batch of images arriving as input, our algorithm calculates the nearest-centroid embeddings $N_t$ and then checks whether they exhibit drift with the already known tasks stored in the memory, starting with the most recent. Drift is evaluated through the drift detector introduced before. If the batch drifts regarding all the tasks, that is, it is a new task, we save $N_t$ in memory $\mathcal{M}$, we train incrementally the task classifier $h_t$ using $N_t$ and the new task label $T_t$ with no supervision, and we add a new head corresponding with this new task to the multi-head classifier, which will be used for inference until there is a domain change. Conversely, if we identify in the memory some task that is not drifting from the incoming batch, the classifier $h_t$ is employed to estimate the task ID. As this is expected to be the same as the matching task in the memory, we can add an additional check that will help to identify accuracy issues with the drift detector and/or the task classifier. The task ID is then fed into the multi-head classifier to select the appropriate classifier, which will be used for inference until there is a domain change.
 
+
+![img1](img/Task_boundary_Replay_area.png)
+![img2](img/Task_boundary_LwF_area.png)
+![img2](img/Task_boundary_EWC_area.png)
+
  * Details can be seen at: https://github.com/gusseppe/TADIL/tree/main/online_pipeline
 
 ## Dataset
